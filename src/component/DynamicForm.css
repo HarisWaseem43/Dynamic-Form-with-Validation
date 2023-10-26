@@ -1,0 +1,74 @@
+.App {
+  /* text-align: center; */
+}
+
+.wrapper {
+  margin: 0px 0px 0px 7%;
+  width: 952px;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+}
+.inputWidth {
+  width: 428px;
+  padding: 12px;
+  border-radius: 5px;
+}
+.heading {
+  text-align: start;
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: #4f115a;
+}
+.div {
+  margin: 0px 20px 0px 0px;
+}
+.para {
+  margin-top: 0px;
+  font-size: 12px;
+  text-align: start;
+  color: #9206d8;
+  font-weight: bold;
+}
+.button {
+  margin: 4% 0% 4% 59%;
+  padding: 8px 44px;
+  border-radius: 6px;
+  font-size: 18px;
+  color: #d9c6df;
+  background-color: #4f115a;
+  font-weight: bold;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #34023b;
+}
+.error {
+  margin-top: 0px;
+  color: red;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+.block {
+  display: block;
+  z-index: 9999;
+  width: 100%;
+  background-color: black;
+}
+.mainHeading {
+  margin-left: 7%;
+  font-size: 24px;
+  font-weight: bold;
+  color: #4f115a;
+}
+.Header {
+  position: sticky;
+  top: 0px;
+  background: #4f115a;
+  color: #d9c6df;
+  padding: 1% 0% 1% 7%;
+  font-size: 30px;
+  font-weight: bold;
+  box-shadow: 0px -5px 27px 14px #a987b3;
+}
