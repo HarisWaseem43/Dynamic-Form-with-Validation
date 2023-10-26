@@ -1,5 +1,5 @@
 import "./App.css";
-import DynamicForm from "./component/DynamicForm";
+import DynamicForm from "./component/Dynamic Form/DynamicForm";
 
 function App() {
   return (
