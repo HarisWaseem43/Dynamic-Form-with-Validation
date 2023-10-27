@@ -3,6 +3,16 @@ import "./DynamicForm.css";
 
 const DynamicForm = () => {
   const [formfield, setFormField] = useState({
+    Email: [
+      {
+        EmailHeading: "Email",
+        name: "Email",
+        EmailId: 1,
+        EmailPLaceholder: "Enter Your Email",
+        required: true,
+        error: "",
+      },
+    ],
     Summary: [
       {
         heading: "Account",
@@ -82,6 +92,7 @@ const DynamicForm = () => {
   // const [formError, setFormError] = useState({});
   const [summaryFormError, setSummaryFormError] = useState({});
   const [componentFormError, setComponentFormError] = useState({});
+  const [emailFormError, setEmailFormError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
   const handleSummaryFormChange = (event, index) => {
@@ -94,6 +105,12 @@ const DynamicForm = () => {
     let data = [...formfield.Component];
     data[index][event.target.name] = event.target.value;
     setFormField({ ...formfield, Component: data });
+  };
+
+  const handleEmailFormChange = (event, index) => {
+    let data = [...formfield.Email];
+    data[index][event.target.name] = event.target.value;
+    setFormField({ ...formfield, Email: data });
   };
 
   const validate = (values) => {
@@ -111,16 +128,18 @@ const DynamicForm = () => {
     if (
       Object.keys(summaryFormError).length === 0 &&
       Object.keys(componentFormError).length === 0 &&
+      Object.keys(emailFormError).length === 0 &&
       isSubmit
     ) {
       console.log("FormFields:", formfield);
     }
-  }, [summaryFormError, componentFormError]);
+  }, [summaryFormError, componentFormError, emailFormError]);
 
   const onSubmit = (e) => {
     e.preventDefault();
     setSummaryFormError(validate(formfield.Summary));
     setComponentFormError(validate(formfield.Component));
+    setEmailFormError(validate(formfield.Email));
     setIsSubmit(true);
   };
 
@@ -130,6 +149,25 @@ const DynamicForm = () => {
         <span>Account Setup</span>
       </div>
       <div className="App">
+        <h1 className="mainHeading">Email Verification</h1>
+        <form className="wrapper" onSubmit={onSubmit}>
+          {formfield.Email.map((form, index) => {
+            return (
+              <div className="div" key={form.id}>
+                <h6 className="heading">{form.EmailHeading}</h6>
+                <input
+                  className="inputWidth"
+                  name={form.name}
+                  onChange={(event) => handleEmailFormChange(event, index)}
+                  placeholder={form.EmailPLaceholder}
+                />
+                <p className="para">{form.Description}</p>
+                <p className="error">{emailFormError[form.name]}</p>
+              </div>
+            );
+          })}
+        </form>
+
         <h1 className="mainHeading">Summary</h1>
         <form className="wrapper" onSubmit={onSubmit}>
           {formfield.Summary.map((form, index) => {
